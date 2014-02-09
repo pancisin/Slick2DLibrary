@@ -23,7 +23,6 @@ public class Package extends AbstractActor {
 
     @Override
     public void act() {
-            
         this.setX((int)(this.getX() + cos(toRadians(degree))*c));
         this.setY((int)(this.getY() + sin(toRadians(degree))*c));      
     }

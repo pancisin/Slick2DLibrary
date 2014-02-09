@@ -15,7 +15,14 @@ public class Hero extends AbstractActor {
     private final GameContainer gc;
     private Input input;
     private float i;
-    private int direction;
+    private enum move {
+        up,
+        left,
+        down,
+        right
+    };
+    private move direction;
+    private static final double acceleration = 0.05;
 
     public Hero(GameContainer gcc, World wrld) throws SlickException {
         gc = gcc;
@@ -28,8 +35,6 @@ public class Hero extends AbstractActor {
     @Override
     public void act() {
 //        Pohyb
-        double acceleration = 0.05;
-
         input = gc.getInput();
 
         if ((input.isKeyPressed(Input.KEY_W) || input.isKeyPressed(Input.KEY_S) || input.isKeyPressed(Input.KEY_A) || input.isKeyPressed(Input.KEY_D))) {
@@ -39,23 +44,23 @@ public class Hero extends AbstractActor {
         if (i > 0 && !(input.isKeyDown(Input.KEY_W) || input.isKeyDown(Input.KEY_S) || input.isKeyDown(Input.KEY_A) || input.isKeyDown(Input.KEY_D))) {
             do {
                 switch (direction) {
-                    case 1:
+                    case up:
                         moveY(-1);
                         break;
-                    case 2:
+                    case down:
                         moveY(1);
                         break;
-                    case 3:
+                    case left:
                         moveX(-1);
                         break;
-                    case 4:
+                    case right:
                         moveX(1);
                         break;
                     default :
                         break;
                 }
-
-                i -= acceleration;
+                
+                i -= acceleration / 2;
             } while (i == 0);
         }
 
@@ -67,19 +72,19 @@ public class Hero extends AbstractActor {
 
         if (input.isKeyDown(Input.KEY_W)) {
             moveY(-1);
-            direction = 1;
+            direction = move.up;
         }
         if (input.isKeyDown(Input.KEY_S)) {
-            direction = 2;
             moveY(1);
+            direction = move.down;
         }
         if (input.isKeyDown(Input.KEY_A)) {
-            direction = 3;
             moveX(-1);
+            direction = move.left;
         }
         if (input.isKeyDown(Input.KEY_D)) {
-            direction = 4;
             moveX(1);
+            direction = move.right;
         }
 
 //       Otočenie 
