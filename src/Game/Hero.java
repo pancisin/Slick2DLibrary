@@ -15,6 +15,7 @@ public class Hero extends AbstractActor {
     private final GameContainer gc;
     private Input input;
     private float i;
+    private int direction;
 
     public Hero(GameContainer gcc, World wrld) throws SlickException {
         gc = gcc;
@@ -35,6 +36,29 @@ public class Hero extends AbstractActor {
             i = 0;
         }
 
+        if (i > 0 && !(input.isKeyDown(Input.KEY_W) || input.isKeyDown(Input.KEY_S) || input.isKeyDown(Input.KEY_A) || input.isKeyDown(Input.KEY_D))) {
+            do {
+                switch (direction) {
+                    case 1:
+                        moveY(-1);
+                        break;
+                    case 2:
+                        moveY(1);
+                        break;
+                    case 3:
+                        moveX(-1);
+                        break;
+                    case 4:
+                        moveX(1);
+                        break;
+                    default :
+                        break;
+                }
+
+                i -= acceleration;
+            } while (i == 0);
+        }
+
         if (input.isKeyDown(Input.KEY_W) || input.isKeyDown(Input.KEY_S) || input.isKeyDown(Input.KEY_A) || input.isKeyDown(Input.KEY_D)) {
             if (i < 2) {
                 i += acceleration;
@@ -42,16 +66,20 @@ public class Hero extends AbstractActor {
         }
 
         if (input.isKeyDown(Input.KEY_W)) {
-            this.setY((int) (this.getY() - exp(i)));
+            moveY(-1);
+            direction = 1;
         }
         if (input.isKeyDown(Input.KEY_S)) {
-            this.setY((int) (this.getY() + exp(i)));
+            direction = 2;
+            moveY(1);
         }
         if (input.isKeyDown(Input.KEY_A)) {
-            this.setX((int) (this.getX() - exp(i)));
+            direction = 3;
+            moveX(-1);
         }
         if (input.isKeyDown(Input.KEY_D)) {
-            this.setX((int) (this.getX() + exp(i)));
+            direction = 4;
+            moveX(1);
         }
 
 //       Otočenie 
@@ -75,4 +103,11 @@ public class Hero extends AbstractActor {
         }
     }
 
+    public void moveX(int koef) {
+        this.setX((int) (this.getX() + koef * exp(i)));
+    }
+
+    public void moveY(int koef) {
+        this.setY((int) (this.getY() + koef * exp(i)));
+    }
 }
