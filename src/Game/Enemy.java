@@ -15,6 +15,7 @@ public class Enemy extends AbstractActor {
         this.getImage().setCenterOfRotation(this.getImage().getWidth() / 2, this.getImage().getHeight() / 2);
         this.setImageSize(300, 300);
         this.setWorld(wrld);
+        this.setPosition(50, 150);
         
     }
 
