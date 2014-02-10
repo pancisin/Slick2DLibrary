@@ -15,7 +15,9 @@ public class Hero extends AbstractActor {
     private final GameContainer gc;
     private Input input;
     private float i;
+
     private enum move {
+
         up,
         left,
         down,
@@ -23,10 +25,11 @@ public class Hero extends AbstractActor {
     };
     private move direction;
     private static final double acceleration = 0.05;
+    int d = 0;
 
     public Hero(GameContainer gcc, World wrld) throws SlickException {
         gc = gcc;
-        this.setImage("resources/images/player.png");
+        this.setImage("resources/images/player.png",253,83);
         this.getImage().setCenterOfRotation(this.getImage().getWidth() / 2, this.getImage().getHeight() / 2);
         this.setWorld(wrld);
         i = 0;
@@ -44,7 +47,7 @@ public class Hero extends AbstractActor {
         if (i > 0 && !(input.isKeyDown(Input.KEY_W) || input.isKeyDown(Input.KEY_S) || input.isKeyDown(Input.KEY_A) || input.isKeyDown(Input.KEY_D))) {
             do {
                 switch (direction) {
-                    case up:
+                    case up:                       
                         moveY(-1);
                         break;
                     case down:
@@ -56,10 +59,10 @@ public class Hero extends AbstractActor {
                     case right:
                         moveX(1);
                         break;
-                    default :
+                    default:
                         break;
                 }
-                
+
                 i -= acceleration / 2;
             } while (i == 0);
         }
@@ -89,9 +92,12 @@ public class Hero extends AbstractActor {
 
 //       Otočenie 
         if (input.getMouseX() > this.getX()) {
-            this.setImage("resources/images/player.png");
+            if (!"resources/images/player.png".equals(this.getImage().getResourceReference())) {
+                this.setImage("resources/images/player.png",253,83);
+            }
         } else {
-            this.setImage("resources/images/playerev.png");
+            if (!"resources/images/playerev.png".equals(this.getImage().getResourceReference()))
+            this.setImage("resources/images/playerev.png",253,83);
         }
 
 //        Rotácia

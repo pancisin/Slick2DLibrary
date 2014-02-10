@@ -3,12 +3,8 @@ package Gui;
 import Game.Actor;
 import Game.Enemy;
 import Game.Hero;
-import System.Map;
 import System.SystemKey;
 import System.World;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -42,13 +38,6 @@ public class Game extends BasicGame {
         Enemy enemy = new Enemy(world);
         world.addToWorld(enemy);
         
-//        Map map = null;
-//        try {
-//            map = new Map("resources/levels/thefirst.txt");
-//        } catch (IOException ex) {
-//            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        world.addToWorld(map);
     }
 
     @Override

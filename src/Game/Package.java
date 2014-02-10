@@ -14,8 +14,7 @@ public class Package extends AbstractActor {
     
     public Package(AbstractActor act) {
         actor = act;
-        this.setImage("resources/images/package.png");
-        this.setImageSize(40, 40);
+        this.setImage("resources/images/package.png",40,40);
         this.setPosition(actor.getX()+(int)actor.getImage().getCenterOfRotationX(), actor.getY()+(int)actor.getImage().getCenterOfRotationY());
         
         degree =  actor.getRotation();
