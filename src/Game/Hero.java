@@ -29,7 +29,7 @@ public class Hero extends AbstractActor {
 
     public Hero(GameContainer gcc, World wrld) throws SlickException {
         gc = gcc;
-        this.setImage("resources/images/player.png",253,83);
+        this.setImage("resources/images/player.png", 253, 83);
         this.getImage().setCenterOfRotation(this.getImage().getWidth() / 2, this.getImage().getHeight() / 2);
         this.setWorld(wrld);
         i = 0;
@@ -47,7 +47,7 @@ public class Hero extends AbstractActor {
         if (i > 0 && !(input.isKeyDown(Input.KEY_W) || input.isKeyDown(Input.KEY_S) || input.isKeyDown(Input.KEY_A) || input.isKeyDown(Input.KEY_D))) {
             do {
                 switch (direction) {
-                    case up:                       
+                    case up:
                         moveY(-1);
                         break;
                     case down:
@@ -93,32 +93,33 @@ public class Hero extends AbstractActor {
 //       Otočenie 
         if (input.getMouseX() > this.getX()) {
             if (!"resources/images/player.png".equals(this.getImage().getResourceReference())) {
-                this.setImage("resources/images/player.png",253,83);
+                this.setImage("resources/images/player.png", 253, 83);
             }
         } else {
-            if (!"resources/images/playerev.png".equals(this.getImage().getResourceReference()))
-            this.setImage("resources/images/playerev.png",253,83);
+            if (!"resources/images/playerev.png".equals(this.getImage().getResourceReference())) {
+                this.setImage("resources/images/playerev.png", 253, 83);
+            }
         }
 
 //        Rotácia
-        float yDistance = input.getMouseY() - this.getY();
-        float xDistance = input.getMouseX() - this.getX();
+        float yDistance = input.getMouseY() - this.getY() - this.getImage().getHeight() / 2;
+        float xDistance = input.getMouseX() - this.getX() - this.getImage().getWidth() / 2;
 
         this.setRotation(Math.toDegrees(Math.atan2(yDistance, xDistance)));
         this.getImage().setRotation((float) this.getRotation());
 
-        //        Funkčné tlačidlo (mouse button 1/2)
+//        Funkčné tlačidlo (mouse button 1/2)
         if (input.isMousePressed(Input.MOUSE_LEFT_BUTTON)) {
             Package bullet = new Package(this);
             this.getWorld().addToWorld(bullet);
         }
     }
 
-    public void moveX(int koef) {
+    private void moveX(int koef) {
         this.setX((int) (this.getX() + koef * exp(i)));
     }
 
-    public void moveY(int koef) {
+    private void moveY(int koef) {
         this.setY((int) (this.getY() + koef * exp(i)));
     }
 }

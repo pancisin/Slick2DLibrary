@@ -10,7 +10,7 @@ public class Package extends AbstractActor {
     
     AbstractActor actor;
     int c = 10;
-    private  double degree;
+    private final  double degree;
     
     public Package(AbstractActor act) {
         actor = act;

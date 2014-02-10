@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="16" tileheight="16" backgroundcolor="#000000">
+ <tileset firstgid="1" name="tileset00" tilewidth="16" tileheight="16">
+  <image source="../../../SlickTest/resources/levels/tileset00.png" width="160" height="160"/>
+ </tileset>
+ <tileset firstgid="101" name="planets" tilewidth="16" tileheight="16">
+  <image source="planetstileset.png" width="640" height="400"/>
+ </tileset>
+ <imagelayer name="background" width="100" height="100" visible="0">
+  <image source="../images/background.jpg"/>
+ </imagelayer>
+ <layer name="tiles" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3bRXYUQQCA4bDAPTicAVtBCM4ZkB0aHEICBDsD7m5nwN3tDLi7XYB/y4PQ6dDd1en6v/f+Xb/pmurM1Mykq6ZGUhFmdQo9Akn6fw20mJbQUlqWcPxY3/v+MCrDOdlK22g77aCd2T202uEMnaVzdJ4uhB1OpY1sw+voMT2hp/SMnuc6IiXpzDXrQl2pG3V3fZCUoRbaQBtpE22mLUFHFLdjdJxO0Ek6RadDDihyd+ke3acH9JAeBR1R+8ysyGeHL/SVvtF3+kE/cz7naOZuTEXmL2uDmZchNJSG0XAakfNczebx57TxHFn+ftARTOb5TqGpNI2m04zI5kDKWlXWT/3O39zVUfi3KqkK/DylmBSxdi+nFbSSVtHq/E+pf9hFu2kP7aV9YYcTvYt0iS7TFbqacHwjraEmaqa1tI7W5zjGmLygl/SKXtObhOP30wE6SIfoMB2hozmOMSY9WKN6Ui/qTX0S1qxrdJ1u0E26RbfpTs7jLIMyrrVv6R29pw/0kT7R55CDKkgZ19q+vH76UX+qpQE0kAZF8N0n7VpbhHHM+3iqowlUTxNpUgTXI+1aW4S5zPs8mk8LaCEtooYIrkfatVbVlOb+BO9D+btQewbT3IciKT7+nyNOXnfFwvtSqs33MkmKg3tCy8U9oeVSlT2hVRFiT6haF2JPqFrnnlBJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJUox+ARc00whAnAAA
+  </data>
+ </layer>
+ <objectgroup name="objects" width="100" height="100">
+  <object name="player" x="379" y="319" width="89" height="83"/>
+ </objectgroup>
+</map>

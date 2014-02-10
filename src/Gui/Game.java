@@ -3,6 +3,7 @@ package Gui;
 import Game.Actor;
 import Game.Enemy;
 import Game.Hero;
+import System.Map;
 import System.SystemKey;
 import System.World;
 import org.newdawn.slick.BasicGame;
@@ -21,6 +22,7 @@ public class Game extends BasicGame {
     private SystemKey sk;
     World world;
     private Hero player;
+    private Map map;
 
     public Game(String title) throws SlickException {
         super(title);
@@ -37,7 +39,9 @@ public class Game extends BasicGame {
 
         Enemy enemy = new Enemy(world);
         world.addToWorld(enemy);
-        
+
+        map = new Map("resources/levels/untitled.tmx");
+
     }
 
     @Override
@@ -54,13 +58,21 @@ public class Game extends BasicGame {
 
     @Override
     public void render(GameContainer gc, Graphics g) throws SlickException {
+
+//        render mapy;
+        map.render(0,0);
+        
+        
+//        render objektov;
         for (Actor actual : world.getList()) {
             if (world.hasNext()) {
-                if (actual.getImage() != null)  {
+                if (actual.getImage() != null) {
                     g.drawImage(actual.getImage(), actual.getX(), actual.getY());
                 }
             }
         }
+        
+//        render napis (to iba na skusku);
         g.drawString("PlanetExpress", player.getX() + 40, player.getY() - 20);
     }
 
@@ -71,5 +83,5 @@ public class Game extends BasicGame {
     public GameContainer getGameContainer() {
         return gcdef;
     }
-    
+
 }
