@@ -11,9 +11,8 @@ public class Enemy extends AbstractActor {
     private int posun = 0;
         
     public Enemy(World wrld) {
-        this.setImage("resources/images/planet0.png");
+        this.setImage("resources/images/planet0.png",100,100);
         this.getImage().setCenterOfRotation(this.getImage().getWidth() / 2, this.getImage().getHeight() / 2);
-        this.setImageSize(120, 100);
         this.setWorld(wrld);
         
     }

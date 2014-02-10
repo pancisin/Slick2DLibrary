@@ -21,7 +21,7 @@ public class SlickTest {
         app.setShowFPS(showFPS);
         app.start();
         
-
+        
     }
 
 }
