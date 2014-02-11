@@ -92,7 +92,7 @@ public class Hero extends AbstractActor {
         }
 
 //       Otočenie 
-        if (input.getMouseX() > this.getX()) {
+        if (input.getMouseX() > this.getX() + this.getImage().getCenterOfRotationX()) {
             if (!"resources/images/player.png".equals(this.getImage().getResourceReference())) {
                 this.setImage("resources/images/player.png", 253, 83);
             }
@@ -103,8 +103,8 @@ public class Hero extends AbstractActor {
         }
 
 //        Rotácia
-        float yDistance = input.getMouseY() - this.getY() - this.getImage().getHeight() / 2;
-        float xDistance = input.getMouseX() - this.getX() - this.getImage().getWidth() / 2;
+        float yDistance = input.getMouseY() - this.getY() - this.getImage().getCenterOfRotationY();
+        float xDistance = input.getMouseX() - this.getX() - this.getImage().getCenterOfRotationX();
 
         this.setRotation(Math.toDegrees(Math.atan2(yDistance, xDistance)));
         this.getImage().setRotation((float) this.getRotation());
