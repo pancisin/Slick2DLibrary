@@ -76,6 +76,7 @@ public class Hero extends AbstractActor {
         if (input.isKeyDown(Input.KEY_W)) {
             moveY(-1);
             direction = move.up;
+
         }
         if (input.isKeyDown(Input.KEY_S)) {
             moveY(1);
@@ -113,6 +114,12 @@ public class Hero extends AbstractActor {
             Package bullet = new Package(this);
             this.getWorld().addToWorld(bullet);
         }
+
+        if (input.isKeyPressed(Input.KEY_SPACE)) {
+            jump();
+        }
+        applyGravity();
+
     }
 
     private void moveX(int koef) {

@@ -20,8 +20,7 @@ public class SlickTest {
         app.setTargetFrameRate(fpslimit);
         app.setShowFPS(showFPS);
         app.start();
-        
-        
+
     }
 
 }
