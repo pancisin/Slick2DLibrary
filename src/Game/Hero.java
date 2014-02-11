@@ -103,7 +103,7 @@ public class Hero extends AbstractActor {
         }
 
 //        Rotácia
-        float yDistance = input.getMouseY() - this.getY() - this.getImage().getCenterOfRotationY();
+        float yDistance = input.getMouseY() - this.getY() - this.getImage().getCenterOfRotationY() ;
         float xDistance = input.getMouseX() - this.getX() - this.getImage().getCenterOfRotationX();
 
         this.setRotation(Math.toDegrees(Math.atan2(yDistance, xDistance)));
