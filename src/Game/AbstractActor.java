@@ -1,6 +1,7 @@
 package Game;
 
 import System.World;
+import static java.lang.Math.abs;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.newdawn.slick.Image;
@@ -17,12 +18,12 @@ public abstract class AbstractActor implements Actor {
     private Image image;
     private World world;
     private double rotation;
-    private static float maxfallspeed = 3;
-    private static double gravity = 1.04;
+    private static final double maxfallspeed = 10;
+    private static final double gravity = 1.01;
     private double yspeed = 0;
     private double yacceleration = 0.1;
-    private boolean jumping = false;
-    private boolean falling = true;
+    private boolean jumping = true;
+    //   private boolean falling = true;
 
     @Override
     public void setPosition(int i, int j) {
@@ -71,10 +72,7 @@ public abstract class AbstractActor implements Actor {
     }
 
     @Override
-    public void act() {
-        applyGravity();
-
-    }
+    public abstract void act();
 
     @Override
     public void setWorld(World wrld) {
@@ -111,25 +109,26 @@ public abstract class AbstractActor implements Actor {
     }
 
     public void applyGravity() {
-        if (falling) {
-            if (this.yspeed <= maxfallspeed) {
+        if (jumping) {
+            if ((this.yspeed <= maxfallspeed)) {
                 this.yacceleration = this.yacceleration * gravity;
-
+                this.yspeed = this.yspeed + this.yacceleration;
             }
-            this.yspeed = this.yspeed + this.yacceleration;
-            System.out.println(this.yspeed);
+
             this.ypos = this.ypos + (int) this.yspeed;
 
         }
+
         if (this.ypos > 600) {
-            falling = false;
-            this.yacceleration = 0.1;
-            this.yspeed = 0;
+            jumping = false;
         }
+
     }
 
     public void jump() {
-
+        this.yspeed = -10;
+        this.yacceleration = 0.1;
+        this.jumping = true;
     }
 
     public void setJumping(Boolean b) {
