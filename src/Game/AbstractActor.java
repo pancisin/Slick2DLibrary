@@ -117,7 +117,6 @@ public abstract class AbstractActor implements Actor {
 
             }
             this.yspeed = this.yspeed + this.yacceleration;
-            System.out.println(this.yspeed);
             this.ypos = this.ypos + (int) this.yspeed;
 
         }
