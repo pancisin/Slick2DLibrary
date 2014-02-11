@@ -13,7 +13,7 @@ public class SystemKey {
     GameContainer gcdef;
 
     public SystemKey(GameContainer gc) {
-        input = gc.getInput(); 
+        input = gc.getInput();
         gcdef = gc;
     }
 
@@ -21,6 +21,6 @@ public class SystemKey {
         if (input.isKeyDown(Input.KEY_ESCAPE)) {
             gcdef.exit();
         }
-        
+
     }
 }

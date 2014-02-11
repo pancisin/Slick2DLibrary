@@ -1,5 +1,6 @@
 package Gui;
 
+import Game.AbstractActor;
 import Game.Actor;
 import Game.Enemy;
 import Game.Hero;
@@ -60,18 +61,17 @@ public class Game extends BasicGame {
     public void render(GameContainer gc, Graphics g) throws SlickException {
 
 //        render mapy;
-        map.render(0,0);
-        
-        
+        map.render(0, 0);
+
 //        render objektov;
-        for (Actor actual : world.getList()) {
+        for (AbstractActor actual : world.getList()) {
             if (world.hasNext()) {
                 if (actual.getImage() != null) {
                     g.drawImage(actual.getImage(), actual.getX(), actual.getY());
                 }
             }
         }
-        
+
 //        render napis (to iba na skusku);
         g.drawString("PlanetExpress", player.getX() + 40, player.getY() - 20);
     }

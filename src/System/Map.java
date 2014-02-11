@@ -16,8 +16,7 @@ public class Map {
     public Map(String f) throws SlickException {
         tilMap = new TiledMap(f);
         System.out.println();
-        
-        
+
     }
 
     public void render(int i, int j) {

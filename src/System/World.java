@@ -1,6 +1,7 @@
 package System;
 
-import Game.Actor;
+import Game.AbstractActor;
+
 import java.util.ArrayList;
 
 /**
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 public class World {
 
     private int i, amount;
-    ArrayList<Actor> actorlist;
+    ArrayList<AbstractActor> actorlist;
     private boolean adding;
 
     public World() {
@@ -20,13 +21,13 @@ public class World {
         adding = false;
     }
 
-    public void addToWorld(Actor actor) {
+    public void addToWorld(AbstractActor actor) {
         adding = true;
         actorlist.add(actor);
         amount++;
     }
 
-    public Actor getNext() {
+    public AbstractActor getNext() {
         if (actorlist.isEmpty()) {
             return null;
         }
@@ -35,10 +36,10 @@ public class World {
             i = 0;
         }
 
-        return (Actor) actorlist.get(i++);
+        return (AbstractActor) actorlist.get(i++);
     }
 
-    public void removeFromWorld(Actor actor) {
+    public void removeFromWorld(AbstractActor actor) {
         actorlist.remove(actor);
     }
 
@@ -50,7 +51,7 @@ public class World {
         }
     }
 
-    public ArrayList<Actor> getList() {
+    public ArrayList<AbstractActor> getList() {
         return actorlist;
     }
 
@@ -61,7 +62,7 @@ public class World {
     public boolean getModificationException() {
         return adding;
     }
-    
+
     public int getAmount() {
         return amount;
     }

@@ -17,6 +17,12 @@ public abstract class AbstractActor implements Actor {
     private Image image;
     private World world;
     private double rotation;
+    private static float maxfallspeed = 3;
+    private static double gravity = 1.04;
+    private double yspeed = 0;
+    private double yacceleration = 0.1;
+    private boolean jumping = false;
+    private boolean falling = true;
 
     @Override
     public void setPosition(int i, int j) {
@@ -65,7 +71,10 @@ public abstract class AbstractActor implements Actor {
     }
 
     @Override
-    public abstract void act();
+    public void act() {
+        applyGravity();
+
+    }
 
     @Override
     public void setWorld(World wrld) {
@@ -90,11 +99,41 @@ public abstract class AbstractActor implements Actor {
 
     public boolean intersects(AbstractActor me, AbstractActor actor) {
         if (actor != me) {
-            if ((me.xpos + me.width >= actor.getX() && me.ypos + me.height >= actor.ypos) || (me.xpos <= actor.xpos + actor.width  && me.ypos <= actor.ypos + actor.height)) {
-                return true;
+            if ((me.xpos + me.width >= actor.getX() && (actor.getX() + actor.width >= me.xpos))) {
+                if ((me.ypos + me.height >= actor.getY()) && (actor.getY() + actor.height >= me.getY())) {
+                    return true;
+                }
             }
+
         }
         return false;
+
+    }
+
+    public void applyGravity() {
+        if (falling) {
+            if (this.yspeed <= maxfallspeed) {
+                this.yacceleration = this.yacceleration * gravity;
+
+            }
+            this.yspeed = this.yspeed + this.yacceleration;
+            System.out.println(this.yspeed);
+            this.ypos = this.ypos + (int) this.yspeed;
+
+        }
+        if (this.ypos > 600) {
+            falling = false;
+            this.yacceleration = 0.1;
+            this.yspeed = 0;
+        }
+    }
+
+    public void jump() {
+
+    }
+
+    public void setJumping(Boolean b) {
+        this.jumping = b;
     }
 
 }
